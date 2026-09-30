@@ -7,18 +7,18 @@ from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, C
 from database import init_db, add_user, get_user
 
 # --- እባክዎ እነዚህን መረጃዎች በትክክል ይሙሉ ---
-TOKEN = "BOT_TOKEN_ህን_እዚህ_ግቡ"
-WEBAPP_URL = "https://your-railway-app-url.up.railway.app/index.html"  # Railway ከሰጠዎት ሊንክ በኋላ /index.html ብለው ያስገቡ
+TOKEN = "8517362183:AAE5NEmb2QphoprzEQMeJ3dsdloIPcV2-0k"
+WEBAPP_URL = "https://sami37-cpu.github.io/regl-pay-mini-app/"  # Railway ከሰጠዎት ሊንክ በኋላ /index.html ብለው ያስገቡ
 
 # 1 እስከ 3 ያሉት ቻናሎች በግዴታ (Forced) ሲታዩ፣ 4ተኛው መደበኛ ሆኖ በድብቅ ይካተታል
 CHANNELS = [
-    {"name": "ቻናል 1", "url": "https://t.me/channel_1_link", "id": "@channel_1_username", "forced": True},
-    {"name": "ቻናል 2", "url": "https://t.me/channel_2_link", "id": "@channel_2_username", "forced": True},
-    {"name": "ቻናል 3", "url": "https://t.me/channel_3_link", "id": "@channel_3_username", "forced": True},
-    {"name": "ቻናል 4", "url": "https://t.me/channel_4_link", "id": "@channel_4_username", "forced": False}
+    {"name": "ቻናል 1", "url": "https://t.me/ethiotech011", "id": "@channel_1_username", "forced": True},
+    {"name": "ቻናል 2", "url": "https://t.me/Big_Tech_sami", "id": "@channel_2_username", "forced": True},
+    {"name": "ቻናል 3", "url": "https://t.me/videobestquality", "id": "@channel_3_username", "forced": True},
+    {"name": "ቻናል 4", "url": "https://t.me/ETHIO_FREE_INTER", "id": "@channel_4_username", "forced": False}
 ]
 
-PROOF_CHANNEL_ID = -1001234567890
+PROOF_CHANNEL_ID = -1003774219402
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
