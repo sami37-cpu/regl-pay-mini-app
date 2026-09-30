@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regl Pay Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            padding: 16px;
+            flex: 1;
+            padding-bottom: 80px;
+        }
+        .header-card {
+            background: linear-gradient(135deg, #2a2a2a, #1e1e1e);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #333;
+            margin-bottom: 20px;
+        }
+        .balance {
+            font-size: 28px;
+            font-weight: bold;
+            color: #f39c12;
+            margin-top: 5px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid #2c2c2c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn {
+            background-color: #f39c12;
+            color: #121212;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 1px solid #333;
+        }
+        .nav-item {
+            color: #888;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .nav-item.active {
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-card">
+            <div>የቀሪ ሂሳብዎ (Balance)</div>
+            <div class="balance" id="user-balance">0.00 ETB</div>
+            <div style="font-size: 14px; color: #aaa; margin-top: 8px;" id="user-name">Pro Member 🔶</div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div style="font-weight: bold;">📺 ማስታወቂያ እይ</div>
+                <div style="font-size: 12px; color: #aaa;">ማስታወቂያዎችን በማየት 1 ብር ያግኙ</div>
+            </div>
+            <button class="btn" onclick="watchAd()">እይ (+1 ብር)</button>
+        </div>
+
+        <div class="card">
+            <div>
+                <div style="font-weight: bold;">👥 ጓደኛጋብዝ</div>
+                <div style="font-size: 12px; color: #aaa;">ሰዎችን በመጋበዝ 2 ብር ያግኙ</div>
+            </div>
+            <button class="btn" onclick="openReferral()">ሊንክ ውሰድ</button>
+        </div>
+    </div>
+
+    <div class="nav-bar">
+        <a class="nav-item active" href="#">🏠 Home</a>
+        <a class="nav-item" href="#" onclick="alert('Tasks ክፍት ነው።')">📋 Tasks</a>
+        <a class="nav-item" href="#" onclick="alert('Leaderboard በቅርቡ ይመጣል!')">🏆 Leaderboard</a>
+        <a class="nav-item" href="#" onclick="alert('Profile ክፍት ነው።')">⚙️ Profile</a>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        let user = tg.initDataUnsafe.user;
+        if (user) {
+            document.getElementById('user-name').innerText = user.first_name + " (Pro Member)";
+        }
+
+        const ADSTERRA_URL = "https://www.profitableratecpmnetwork.com/e61qyxn3ya?key=082792f8dcc56b647c08e3e9ed8aa7e5";
+
+        function watchAd() {
+            window.open(ADSTERRA_URL, '_blank');
+            alert("ማስታወቂያውን ከጨረሱ በኋላ ወደ ቦቱ ይመለሱ!");
+        }
+
+        function openReferral() {
+            if (user) {
+                let refLink = `https://t.me/${tg.bot_username || 'ReglPayBot'}?start=${user.id}`;
+                prompt("የሪፈራል ሊንክዎ ይኸውና ኮፒ ያድርጉት:", refLink);
+            }
+        }
+    </script>
+</body>
+</html>
